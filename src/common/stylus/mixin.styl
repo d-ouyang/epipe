@@ -1,0 +1,46 @@
+bg-image($url)
+  background-image: url($url + '@2x.png')
+  @media (-webkit-min-device-pixel-ratio: 3),(min-device-pixel-ratio: 3)
+    background-image: url($url + "@3x.png")
+
+no-wrap()
+  text-overflow: ellipsis
+  overflow: hidden
+  white-space: nowrap
+
+vendor(prop, args)
+  -webkit-{prop} args
+  -moz-{prop} args
+  -o-{prop} args
+  -ms-{prop} args
+  {prop} args
+
+border-radius()
+  vendor('border-radius', arguments)
+
+border-top-left-radius()
+  vendor('border-top-left-radius', arguments)
+
+border-top-right-radius()
+  vendor('border-top-right-radius', arguments)
+
+border-bottom-left-radius()
+  vendor('border-bottom-left-radius', arguments)
+
+border-bottom-right-radius()
+  vendor('border-bottom-right-radius', arguments)
+
+box-shadow()
+  vendor('box-shadow', arguments)
+
+box-sizing()
+  -moz-box-sizing: border-box;  
+  -webkit-box-sizing: border-box; 
+  -o-box-sizing: border-box; 
+  -ms-box-sizing: border-box; 
+  box-sizing: border-box;
+
+opacity(n)
+  opacity n
+  if support-for-ie
+    filter unquote('progid:DXImageTransform.Microsoft.Alpha(Opacity=' + round(n * 100) + ')')
